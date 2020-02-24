@@ -33,7 +33,6 @@ COPY ./assets/ ./assets/
 COPY ./config/config.yml ./config/config.yml
 COPY ./config/sql/ ./config/sql/
 COPY ./locales/ ./locales/
-COPY ./wait-for-it.sh ./wait-for-it.sh
 RUN sed -i 's/host: \(127.0.0.1\|localhost\)/host: postgres/' config/config.yml
 COPY --from=builder /invidious/invidious .
 USER invidious
