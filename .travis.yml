@@ -29,6 +29,7 @@ jobs:
       script:
         - docker-compose up
         - sleep 15 # Wait for cluster to become ready, TODO: do not sleep
+        - docker-compose ps
         - HEADERS="$(curl -I -s http://localhost:3000/)"
         - STATUS="$(echo $HEADERS | head -n1)"
         - if [[ "$STATUS" != *"200 OK"* ]]; then echo "$HEADERS"; exit 1; fi
