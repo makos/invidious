@@ -27,8 +27,9 @@ jobs:
       install:
         - docker-compose build
       script:
-        - docker-compose up -d
+        - docker-compose up
         - sleep 15 # Wait for cluster to become ready, TODO: do not sleep
         - HEADERS="$(curl -v -I -s http://localhost:3000/)"
+        - docker ps -a
         - STATUS="$(echo $HEADERS | head -n1)"
         - if [[ "$STATUS" != *"200 OK"* ]]; then echo "$HEADERS"; exit 1; fi
