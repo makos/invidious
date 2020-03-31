@@ -32,7 +32,6 @@ services:
         domain:
     depends_on:
       - postgres
-    command: ["./wait-for-it.sh", "postgres:5432"]
 
 volumes:
   postgresdata:
